@@ -10,9 +10,47 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .h1{
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container">
+        <div class="text-center">
+            <h1 class="h1">Danh sách sản phẩm</h1>
+        </div>
+        <div id="divSanPham" class="row">
+
+        </div>
+        <table class="table">
+            <thead>
+                <th>Mã SP</th>
+                <th>Tên SP</th>
+                <th>Giá</th>
+                <th>Hình ảnh</th>
+                <th></th>
+            </thead>
+            <tbody id="tblSanPham">
+
+            </tbody>
+        </table>
+        <h1 class="h1">Chuỗi thẻ Tr</h1>
+        <table class="table">
+            <thead>
+                <th>Mã SP</th>
+                <th>Tên SP</th>
+                <th>Giá</th>
+                <th>Hình ảnh</th>
+                <th></th>
+            </thead>
+            <tbody id="tblSanPhamTr">
+
+            </tbody>
+        </table>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -25,7 +63,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="./index.js"></script>
+    <!-- <script src="./SinhVien.js"></script> -->
+    <script type="module" src="./index.js"></script>
 </body>
 
 </html>

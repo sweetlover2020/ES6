@@ -237,41 +237,201 @@
 
 // sp.thongTinSanPham();
 
-// ------------------------- IX: For in and For of
-let mangSP = [
-    {maSP:1, tenSP: 'IPhone', gia:1000},
-    {maSP:2, tenSP: 'IPhone X', gia:1200},
-    {maSP:3, tenSP: 'IPhone XS', gia:1300}
+// // ------------------------- IX: For in and For of
+// let mangSP = [
+//     {maSP:1, tenSP: 'IPhone', gia:1000},
+//     {maSP:2, tenSP: 'IPhone X', gia:1200},
+//     {maSP:3, tenSP: 'IPhone XS', gia:1300}
+// ]
+// // Mảng sản phẩm thể hiện dưới định dạng object
+// let mangSPOject = {
+//     'O': {maSP:4, tenSP: 'IPhone 9', gia:1400},
+//     'a5': {maSP:5, tenSP: 'IPhone 10', gia:1500},
+//     'luia81.$57()sdhasd7': {maSP:6, tenSP: 'IPhone 11', gia:1600},
+// }
+// console.log('SPO1', mangSPOject.a5);
+// console.log('SPO1', mangSPOject.O);
+// console.log('SPO1', mangSPOject['luia81.$57()sdhasd7']);
+
+// // for in dùng để duyệt mảng dưới dạng object từ 1 số cơ sở dữ liệu đặc biệt 
+// // for of: Dùng để duyệt mảng object bình thường
+// // for i tăng dần
+
+// // for i tăng dần
+// for(let i = 0; i<mangSP.length; i++){
+//     console.log('SP1:',mangSP[i]);
+// }
+// // for in
+// for (let index in mangSP){
+//     let sanPham = mangSP[index]
+//     console.log('SP2:',sanPham);
+// }
+// for (let key in mangSPOject){
+//     let sanPham = mangSPOject[key]
+//     console.log('SP2_1:',sanPham);
+// }
+
+// // for of
+// for (let sanPhamFO of mangSP){
+//     console.log('SP3',sanPhamFO);
+// }
+
+// // ---------------- Import
+// import { GiaoVien, NhanVien, domain } from './SinhVien.js';
+// import GiaoVien123 from './SinhVien.js';
+
+// let giaoVien = new GiaoVien(1, 'Nguyen Van K');
+// console.log('giaoVien:', giaoVien);
+
+// let nv = new NhanVien(2, 'Hung LOKA');
+// console.log('nhanVien:', nv);
+
+// console.log('domain', domain);
+
+// let giaoVienX = new GiaoVien123(123, 'Le Thi T');
+// console.log('giaoVien123:', giaoVienX);
+
+// ---------------- Filter()
+let mangSanPham = [
+    { maSP: 1, tenSP: 'Sony Xperia XZ2', gia: 17500000, hangSX: 'SONY' }, //index: 0
+    { maSP: 2, tenSP: 'Sony Xperia XZ1', gia: 15500000, hangSX: 'SONY' }, //index: 1
+    { maSP: 3, tenSP: 'Sony Xperia XZPremium', gia: 18500000, hangSX: 'SONY' }, //index: 2
+    { maSP: 4, tenSP: 'Google Pixel XL', gia: 27500000, hangSX: 'GOOGLE' },
+    { maSP: 5, tenSP: 'Google Pixel 2', gia: 17500000, hangSX: 'GOOGLE' },
+    { maSP: 6, tenSP: 'Samsung Galaxy Note 9', gia: 17500000, hangSX: 'SAMSUNG' },
+    { maSP: 7, tenSP: 'Samsung Galaxy S10 Plus', gia: 27500000, hangSX: 'SAMSUNG' },
+    { maSP: 8, tenSP: 'Samsung Galaxy 5G', gia: 37500000, hangSX: 'SAMSUNG' },
 ]
-// Mảng sản phẩm thể hiện dưới định dạng object
-let mangSPOject = {
-    'O': {maSP:4, tenSP: 'IPhone 9', gia:1400},
-    'a5': {maSP:5, tenSP: 'IPhone 10', gia:1500},
-    'luia81.$57()sdhasd7': {maSP:6, tenSP: 'IPhone 11', gia:1600},
-}
-console.log('SPO1', mangSPOject.a5);
-console.log('SPO1', mangSPOject.O);
-console.log('SPO1', mangSPOject['luia81.$57()sdhasd7']);
 
-// for in dùng để duyệt mảng dưới dạng object từ 1 số cơ sở dữ liệu đặc biệt 
-// for of: Dùng để duyệt mảng object bình thường
-// for i tăng dần
+// // ---------------- Filter()
+// // ES5 console.log() các sản phẩm có hangSX là samsung
+// let result = [];
+// // Duyệt mảng và kiểm tra
+// // for (let sp of mangSanPham) {
+// //     if (sp.hangSX == "SAMSUNG") {
+// //         result.push(sp);
+// //     }
+// // }
+// for (let i = 0; i < mangSanPham.length; i++) {
+//     let sp = mangSanPham[i];
+//     if (sp.hangSX === "SAMSUNG") {
+//         result.push(sp);
+//     }
+// }
+// console.log('ES5:', result);
 
-// for i tăng dần
-for(let i = 0; i<mangSP.length; i++){
-    console.log('SP1:',mangSP[i]);
-}
-// for in
-for (let index in mangSP){
-    let sanPham = mangSP[index]
-    console.log('SP2:',sanPham);
-}
-for (let key in mangSPOject){
-    let sanPham = mangSPOject[key]
-    console.log('SP2_1:',sanPham);
+// // ES6: Lấy ra sản phẩm có hãng sx = sangsung
+// // .filterfilter(callback): Là hàm lấy ra các kết quả trong hàm callback trả về giá trị true
+// // C1: 
+// let result1 = mangSanPham.filter((sp) => {
+//     if (sp.hangSX === 'SAMSUNG') return true;
+// });
+// console.log('ES6_1:', result1);
+// // C2:
+// let mangDienThoaiSony = mangSanPham.filter(sanPham => sanPham.hangSX === 'SONY');
+// console.log('ES6_2:', mangDienThoaiSony);
+
+// // Lấy ra các sản phẩm có giá trên 20tr
+// let dienThoaiTren20tr = mangSanPham.filter(sanPham => sanPham.gia > 20000000);
+// console.log('SP > 20tr:', dienThoaiTren20tr);
+
+// // ---------------- Find()
+// // find(): Tương tự pt filter những kết quả trả về là một đối tượng đầu tiên thỏa điều kiện, ngược lại trả về undefine 
+// // khi không tìm thấy. Thường dùng cho thuộc tính khác biệt giữa các đối tượng trong mảng (thuộc tính khóa chính)
+
+// // Lấy ra 1 sp có mã là 7
+// var spTimKiem = mangSanPham.find(sp => sp.maSP === 7);
+// if (!spTimKiem) {
+//     console.log('Không tìm thấy sản phẩm', spTimKiem);
+// } else {
+//     // let sp = {...spTimKiem}; // Fix ko cho giá bị thay đổi
+//     // sp.gia = 10000;
+//     console.log('spTimKiem:', spTimKiem);
+// }
+// // console.log('mangSP', mangSanPham);
+
+// // ---------------- FindIndex(): Tương tự hàm find => tìm thấy sẽ trả index (có thể chỉnh sửa haocjw xóa dựa vào index). 
+// // Nếu không tìm thấy sẽ trả về -1
+// var index = mangSanPham.findIndex(sp => sp.maSP === 2);
+// console.log('index:', index);
+// if (index !== -1) {
+//     // Tìm thấy 
+//     // Xóa đi
+//     // mangSanPham.splice(index, 1);
+//     // Sửa
+//     mangSanPham[index].gia = 2000000;
+// } else {
+//     console.log('Không tìm thấy sp');
+// }
+// console.log('sanPham:', mangSanPham);
+
+// var arrResult = mangSanPham.filter(sp => sp.maSP !== 2);
+// console.log('arrResult',arrResult);
+
+// // ---------------- ForEach(): Kết quả trả về của hàm này là undefine => thường dùng cho việc duyệt mảng
+// mangSanPham.forEach((sp,index) => {
+//     console.log('sanPham:', sp);
+// })
+
+
+// ----------- map(): Tương tự foreach duyệt qua các phần tử của mảng để biến đổi mảng đó thành mảng khác
+var mangDivSanPham = mangSanPham.map((sp, index) => {
+    return `
+    <div class="col-3">
+        <div class="card text-left">
+            <img class="card-img-top" src="http://picsum.photos/200/200" alt="">
+            <div class="card-body">
+                <h6 class="card-title">${sp.tenSP}</h6>
+                <p class="card-text">${sp.gia}</p>
+            </div>
+        </div>
+    </div>
+    `
+});
+// console.log('Mảng sản phẩm:', mangDivSanPham);
+
+for (let divSP of mangDivSanPham) {
+    document.getElementById('divSanPham').innerHTML += divSP;
 }
 
-// for of
-for (let sanPhamFO of mangSP){
-    console.log('SP3',sanPhamFO);
+// Chỉ lấy sp của samsung
+var mangSPSamSung = mangSanPham.filter((sp => sp.hangSX === "SAMSUNG"));
+var mangTrSanPham = mangSPSamSung.map((sp, index) => {
+    return `
+    <tr>
+        <td>${sp.maSP}</td>
+        <td>${sp.tenSP}</td>
+        <td>${sp.gia}</td>
+        <td><img class="card-img-top" src="http://picsum.photos/50/50" alt="" style="width:50px"></td>
+        <td>${sp.hangSX}</td>
+        <td><button class="btn btn-danger">Xóa</button></td>
+    </tr>
+    `
+})
+
+for (let trSP of mangTrSanPham) {
+    document.getElementById('tblSanPham').innerHTML += trSP;
 }
+
+// reduce: Là hàm trả về 1 giá trị duy nhất của mảng
+let tongTienSP = mangSanPham.reduce((tongTien,sanPham,index) => {
+    tongTien += sanPham.gia;
+    return tongTien;
+},0);
+console.log('tongTienTatCaSP:',tongTienSP.toLocaleString());
+
+
+let chuoiTheTr = mangSanPham.reduce((chuoiTr, sp, index) => {
+    chuoiTr += `
+    <tr>
+        <td>${sp.maSP}</td>
+        <td>${sp.tenSP}</td>
+        <td>${sp.gia}</td>
+        <td><img class="card-img-top" src="http://picsum.photos/50/50" alt="" style="width:50px"></td>
+        <td>${sp.hangSX}</td>
+        <td><button class="btn btn-danger">Xóa</button></td>
+    </tr>
+    `
+    return chuoiTr;
+}, '');
+document.getElementById('tblSanPhamTr').innerHTML = chuoiTheTr;
